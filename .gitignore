@@ -1,0 +1,6 @@
+giout
+node_modules
+.vscode-test/
+*.vsix
+.vscode
+/out

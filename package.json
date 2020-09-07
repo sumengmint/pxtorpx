@@ -1,0 +1,93 @@
+{
+    "name": "pxtorpx",
+    "displayName": "pxToRpx",
+    "description": "一款将px转换为支付宝小程序中rpx的插件",
+    "version": "0.0.1",
+    "publisher": "sumeng",
+    "engines": {
+        "vscode": "^1.48.0"
+    },
+    "categories": [
+        "Formatters",
+        "Snippets",
+        "Other"
+    ],
+    "keywords": [
+        "pxTorpx",
+        "rpx",
+        "px to rpx",
+        "acss"
+    ],
+    "activationEvents": [
+        "onLanguage:axml",
+        "onLanguage:css",
+        "onLanguage:acss",
+        "onLanguage:less",
+        "onLanguage:scss",
+        "onLanguage:sass"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.pxTorpx",
+                "title": "将px转换为rpx"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "extension.pxTorpx",
+                "key": "Alt+Ctrl+p",
+                "mac": "cmd+Ctrl+p"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "when": "editorFocus",
+                    "command": "extension.pxTorpx"
+                }
+            ]
+        },
+        "configuration": {
+            "type": "object",
+            "title": "px-to-rpx configuration",
+            "properties": {
+                "px-to-rpx.baseWidth": {
+                    "type": "number",
+                    "default": 375,
+                    "description": "%extension.baseWidth.title%"
+                },
+                "px-to-rpx.fixedDigits": {
+                    "type": "number",
+                    "default": 2,
+                    "description": "%extension.fixedDigits.title%"
+                },
+                "px-to-rpx.autoRemovePrefixZero": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "%extension.autoRemovePrefixZero.title%"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "@types/glob": "^7.1.3",
+        "@types/mocha": "^8.0.0",
+        "@types/node": "^14.0.27",
+        "@types/vscode": "^1.48.0",
+        "@typescript-eslint/eslint-plugin": "^3.8.0",
+        "@typescript-eslint/parser": "^3.8.0",
+        "eslint": "^7.6.0",
+        "glob": "^7.1.6",
+        "mocha": "^8.0.1",
+        "typescript": "^3.8.3",
+        "vscode-test": "^1.4.0"
+    }
+}
